@@ -2,4 +2,4 @@ const TASK = {
   TASKarr: [],
 };
 
-module.exports = TASK;
+module.exports = { TASK };

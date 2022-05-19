@@ -1,30 +1,39 @@
 const { addTask, deleteTask } = require('./add-remove.js');
 const { setStorage, getStorage } = require('./storage.js');
-const TASK = require('./tarea.js');
+const { arefresh, addInput, submitTask, list, clean }  = require('./variables.js')
+const { TASK } = require('./tarea.js');
+const { toNumber } = require('lodash');
+
+let spy;
+beforeAll(() => {
+  spy = jest.spyOn(document, 'getElementById');
+});
 
 describe('Add and Delete tasks', () => {
-  const htmlNoTask = `
+    describe('Item', () => {
+      beforeAll(()=>{
+        const htmlNoTask = `
   <div id="to-do-list">
       <div id="todo-title">
         <p>Today´s To Do</p>
         <span id="reload">&#x21bb;</span>
       </div>
       <div id="add">
-        <input id="addinput" type="text" placeholder="Add to your list..." value="Some input"/>
+        <input id="addinput" type="text" placeholder="Add to your list..." value=''/>
         <span id="submittask">&#x21ea;</span>
       </div>
       <div id="list"></div>
       <button id="clear" type="reset">Clear all completed</button>
     </div>`;
 
-    const htmlWithTask = `
+        const htmlWithTask = `
     <div id="to-do-list">
       <div id="todo-title">
         <p>Today´s To Do</p>
         <span id="reload">&#x21bb;</span>
       </div>
       <div id="add">
-        <input id="addinput" type="text" placeholder="Add to your list..." />
+        <input id="addinput" type="text" placeholder="Add to your list..." value="Some input"/>
         <span id="submittask">&#x21ea;</span>
       </div>
       <div id="list">
@@ -37,18 +46,18 @@ describe('Add and Delete tasks', () => {
       </div>
       <button id="clear" type="reset">Clear all completed</button>
     </div>`;
+        document.body.innerHTML = htmlNoTask;
+      });
+      it('add value', ()=>{
+        addTask(
+          [{ taskDescrip: 'Some input', completed: false, index: 1 }]
+        );
+        expect(addTask()).toEqual([{
+          taskDescrip: 'Some input',
+          completed: false,
+          index: 1,
+        }]);
+    })
   
-  test('Add Task', () => {
-    document.body.innerHTML = htmlNoTask;
-    const addInput = document.getElementById('addinput');
-    addInput.setAttribute('value', 'Some input');
-
-    addTask();
-
-    expect(getStorage()).toEqual([{
-      taskDescrip: 'Some input',
-      completed: false,
-      index: 1,
-    }]);
   });
 });
