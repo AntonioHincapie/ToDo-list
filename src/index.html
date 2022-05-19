@@ -2,21 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>to do list</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <title>To do list</title>
   </head>
   <body>
-    <div id="to-do-list">
-      <div id="todo-title">
-        <p>Today´s To Do</p>
-        <span id="reload">&#x21bb;</span>
-      </div>
-      <div id="add">
-        <input id="addinput" type="text" placeholder="Add to your list..." />
-        <span id="submittask">&#x21ea;</span>
-      </div>
-      <div id="list"></div>
-      <button id="clear" type="reset">Clear all completed</button>
+    <div id="container">
+      <section id="todo-list">
+        <h1 class="head-form">
+          Today's To Do <span class="material-symbols-outlined">autorenew</span>
+        </h1>
+        <form class="add-items">
+          <div class="placeholder">
+            <input
+              id="description"
+              type="text"
+              placeholder="Add yo your list..."
+            />
+            <span class="material-symbols-outlined">keyboard_return</span>
+          </div>
+          <ul class="check-list"></ul>
+          <button class="btn" type="button">Clear all completed</button>
+        </form>
+      </section>
     </div>
   </body>
 </html>
