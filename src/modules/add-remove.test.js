@@ -5,7 +5,7 @@ const { setTasks } = require('./functions.js');
 const { add } = require('./userex.js');
 const { removeTaskUser } = require('./userex.js');
 
-//Mock HTML
+// Mock HTML
 const html = `<section id="todo-list">
 <h1 class="head-form">Today's To Do <span class="material-symbols-outlined">autorenew</span></h1>
 <form class="add-items">
@@ -28,7 +28,7 @@ const liElement = `<li>
 
 document.body.innerHTML = html;
 
-//Test pure functions
+// Test pure functions
 describe('Add and Remove from storage', () => {
   test('Add item', () => {
     addTask({
@@ -57,7 +57,7 @@ describe('Add and Remove from storage', () => {
   });
 });
 
-//Test HTML DOM manipulation
+// Test HTML DOM manipulation
 describe('Add and Remove from HTML', () => {
   test('Add', () => {
     const liContainer = document.querySelector('.check-list');
